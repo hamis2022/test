@@ -1,0 +1,16 @@
+rm(list=ls())
+rm_new <- read.csv("rat_weight.csv")
+
+rm_new$Diet <- factor(rm_new$Diet, levels = c(1,2,3),
+                   labels = c("Control", "Low fat", "High fat"))
+
+nlevels(rm_new$Diet)
+levels(rm_new$Diet)
+
+attach(rm_new)
+library(ggplot2)
+ggplot(rm_new, aes(x=Time, y= weight,colour = Diet,group=Rat))+ 
+  geom_line()+ facet_wrap(~Diet, ncol = 3)+ labs(x="Time(days)",
+  y="Weight(grams)") + theme_bw() + 
+  theme(legend.position = "top")
+
