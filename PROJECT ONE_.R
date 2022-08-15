@@ -1,5 +1,7 @@
 library(tidyverse)
 library(knitr)
+
+#read csv file
 pengiuns <- read_csv("pengiuns.csv")
 
 pengiuns %>% 
